@@ -1,11 +1,11 @@
 provider "aws" {
-  region = "us-east-1"  # Update as necessary
+  region = "ap-southeast-2"  # Update as necessary
 }
 
 resource "aws_instance" "c8" {
-  ami           = "ami-xxxxxxxx"  # Use the Amazon Linux AMI ID
+  ami           = "ami-0d6560f3176dc9ec0"  # Use the Amazon Linux AMI ID
   instance_type = "t2.micro"
-  key_name      = "your-ssh-key"
+  key_name      = "sheelam-hello"
   tags = {
     Name = "c8.local"
   }
@@ -18,9 +18,9 @@ resource "aws_instance" "c8" {
 }
 
 resource "aws_instance" "u21" {
-  ami           = "ami-xxxxxxxx"  # Use the Ubuntu 21.04 AMI ID
+  ami           = "ami-003f5a76758516d1e"  # Use the Ubuntu 21.04 AMI ID
   instance_type = "t2.micro"
-  key_name      = "your-ssh-key"
+  key_name      = "sheelam-hello"
   tags = {
     Name = "u21.local"
   }
