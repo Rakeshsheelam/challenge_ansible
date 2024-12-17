@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    cd terraform-ansible-jenkins
+                    cd terraform
                     terraform init
                     terraform apply -auto-approve
                     '''
@@ -50,7 +50,7 @@ ${env.TF_VAR_BACKEND_IP}
                 script {
                     sh '''
                     cd ansible
-                    ansible-playbook -i inventory/terraform_inventory.ini playbooks/frontend.yml
+                    ansible-playbook -i inventory/terraform_inventory.ini playbook/frontend.yml
                     '''
                 }
             }
