@@ -1,0 +1,22 @@
+---
+- name: Configure common settings for all Linux systems
+  hosts: all
+  become: true
+  tasks:
+    - name: Disable SELinux
+      ansible.builtin.shell: setenforce 0
+      when: ansible_os_family == "RedHat"
+
+    - name: Disable firewalld
+      ansible.builtin.systemd:
+        name: firewalld
+        state: stopped
+        enabled: no
+      when: ansible_os_family == "RedHat"
+
+    - name: Disable firewalld on Ubuntu
+      ansible.builtin.systemd:
+        name: ufw
+        state: stopped
+        enabled: no
+      when: ansible_os_family == "Debian"
