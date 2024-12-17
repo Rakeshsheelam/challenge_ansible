@@ -1,0 +1,16 @@
+---
+- name: Configure Backend (u21.local)
+  hosts: backend
+  become: true
+  tasks:
+    - name: Install Netdata
+      ansible.builtin.apt:
+        name: netdata
+        state: present
+        update_cache: yes
+
+    - name: Ensure Netdata is running on port 19999
+      ansible.builtin.systemd:
+        name: netdata
+        state: started
+        enabled: yes
